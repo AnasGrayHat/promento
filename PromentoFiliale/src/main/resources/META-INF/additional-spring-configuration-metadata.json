@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "dir.images.logos",
+    "type": "java.lang.String",
+    "description": "A description for 'dir.images.logos'"
+  },
+  {
+    "name": "dir.images.partner.photos",
+    "type": "java.lang.String",
+    "description": "A description for 'dir.images.partner.photos'"
+  }
+]}

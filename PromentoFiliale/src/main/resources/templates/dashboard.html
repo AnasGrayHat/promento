@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <meta name="description" content="Promento Admin"/>
+    <meta name="author" content="Boumali Anas EHTP GI promo 2018"/>
+    <title>Page d'administration</title>
+    
+    <link rel="shortcut icon" href="../assets/global/images/favicon.png" type="image/png"/>
+    <link href="../assets/global/css/style.css" rel="stylesheet"/>
+    <link href="../assets/global/css/theme.css" rel="stylesheet"/>
+    <link href="../assets/global/css/ui.css" rel="stylesheet"/>
+    <link href="../assets/admin/layout1/css/layout.css" rel="stylesheet"/>
+    <!-- BEGIN PAGE STYLE -->
+<!--     <link href="../assets/global/plugins/metrojs/metrojs.min.css" rel="stylesheet"/> -->
+<!--     <link href="../assets/global/plugins/maps-amcharts/ammap/ammap.min.css" rel="stylesheet"/> -->
+    <!-- END PAGE STYLE -->
+    <script src="../assets/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+  </head>
+
+  <!-- BEGIN BODY -->
+  <body class="fixed-topbar fixed-sidebar theme-sdtl color-default dashboard">
+    <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <section>
+      <!-- BEGIN SIDEBAR -->
+              <div class="sidebar">
+        
+        <div class="logopanel">
+          <h1>
+            <a href="dashboard.html"></a>
+          </h1>
+        </div>
+        <div class="sidebar-inner">
+          <div class="sidebar-top">
+<!--             <form action="search-result.html" method="post" class="searchform" id="search-results"> -->
+<!--               <input type="text" class="form-control" name="keyword" placeholder="Search..."/> -->
+<!--             </form> -->
+            <div class="userlogged clearfix">
+              <i class="icon icons-faces-users-01"></i>
+            </div>
+          </div>
+          <div class="menu-title">
+            Navigation 
+            <div class="pull-right menu-settings">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" data-delay="300"> 
+              <i class="icon-settings"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#" id="reorder-menu" class="reorder-menu">Reorder menu</a></li>
+                <li><a href="#" id="remove-menu" class="remove-menu">Remove elements</a></li>
+                <li><a href="#" id="hide-top-sidebar" class="hide-top-sidebar">Hide user &amp; search</a></li>
+              </ul>
+            </div>
+          </div>
+          <ul class="nav nav-sidebar">
+            <li class="nav-active"><a href="/"><i class="icon-home"></i><span>Dashboard</span></a></li>
+  
+   
+
+          <li class="nav-parent">
+              <a><i class="icon-user"></i><span>Entreprises </span><span class="fa arrow"></span></a>
+              <ul class="children collapse">
+        
+                <li><a href="/company/add_company">Ajouter une entreprise</a></li>
+                <li><a href="/company/companies">Nos entreprises</a></li>
+              </ul>
+            </li>
+
+
+   
+
+
+        <li class="nav-parent"><a href=""><i class="icon-user"></i><span>Partners
+            </span><span class="fa arrow"></span></a>
+              <ul class="children collapse">
+
+              <li><a href="/partner/add_partner">Ajouter un partenaire</a></li>
+              <li><a href="/partner/partners">Nos Partenaires</a></li>
+            </ul>
+
+          </li>
+
+
+
+
+          </ul>
+          <!-- SIDEBAR WIDGET FOLDERS -->
+          <div class="sidebar-widgets">
+            <p class="menu-title widget-title">Folders <span class="pull-right"><a href="#" class="new-folder"> <i class="icon-plus"></i></a></span></p>
+
+          </div>
+          <div class="sidebar-footer clearfix">
+            <a class="pull-left footer-settings" href="#" data-rel="tooltip" data-placement="top" data-original-title="Settings">
+            <i class="icon-settings"></i></a>
+            <a class="pull-left toggle_fullscreen" href="#" data-rel="tooltip" data-placement="top" data-original-title="Fullscreen">
+            <i class="icon-size-fullscreen"></i></a>
+            <a class="pull-left" href="user-lockscreen.html" data-rel="tooltip" data-placement="top" data-original-title="Lockscreen">
+            <i class="icon-lock"></i></a>
+            <a class="pull-left btn-effect" href="user-login-v1.html" data-modal="modal-1" data-rel="tooltip" data-placement="top" data-original-title="Logout">
+            <i class="icon-power"></i></a>
+          </div>
+          </div>
+                    </div>
+          	      
+      <!-- END SIDEBAR -->
+      <div class="main-content" >
+        <!-- BEGIN TOPBAR -->
+        <div class="topbar">
+          <div class="header-left">
+            <div class="topnav">
+              <a class="menutoggle" href="#" data-toggle="sidebar-collapsed"><span class="menu__handle"><span>Menu</span></span></a>
+              <ul class="nav nav-icons">
+                <li><a href="#" class="toggle-sidebar-top"><span class="icon-user-following"></span></a></li>
+                <li><a href="mailbox.html"><span class="octicon octicon-mail-read"></span></a></li>
+                <li><a href="#"><span class="octicon octicon-flame"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="header-right">
+            <ul class="header-menu nav navbar-nav">
+              <!-- BEGIN USER DROPDOWN -->
+
+
+              <!-- END USER DROPDOWN -->
+
+              <!-- BEGIN USER DROPDOWN -->
+              <li class="dropdown" id="user-header">
+                <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                <img src="../assets/global/images/avatars/user1.png" alt="user image"/>
+                <span class="username">Admin</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="#"><i class="icon-user"></i><span>My Profile</span></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="icon-calendar"></i><span>My Calendar</span></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="icon-settings"></i><span>Account Settings</span></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="icon-logout"></i><span>Logout</span></a>
+                  </li>
+                </ul>
+              </li>
+              <!-- END USER DROPDOWN -->
+              <!-- CHAT BAR ICON -->
+
+            </ul>
+          </div>
+          <!-- header-right -->
+        </div>
+        
+        <!-- END TOPBAR -->
+        <!-- BEGIN PAGE CONTENT -->
+        <div class="page-content page-thin" >
+          <div class="row">
+ 
+  
+            <div class="col-xlg-2 hidden-lg col-clock">
+              <div class="row">
+                <div class="col-md-12">
+                  <ul class="jquery-clock small" data-jquery-clock="">
+                    <li class="jquery-clock-pin"></li>
+                    <li class="jquery-clock-sec"></li>
+                    <li class="jquery-clock-min"></li>
+                    <li class="jquery-clock-hour"></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="widget-progress-bar">
+                    <div class="clearfix">
+                      <div class="title">Profil Complete</div>
+                      <div class="number">82%</div>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-primary stat1" data-transitiongoal="82"></div>
+                    </div>
+                    <div class="clearfix">
+                      <div class="title">Answer Emails</div>
+                      <div class="number">43%</div>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-primary stat2" data-transitiongoal="43"></div>
+                    </div>
+                    <div class="clearfix">
+                      <div class="title">Server availability</div>
+                      <div class="number">93%</div>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-primary stat3" data-transitiongoal="93"></div>
+                    </div>
+                    <div class="clearfix">
+                      <div class="title">CPU Usage</div>
+                      <div class="number">76%</div>
+                    </div>
+                    <div class="progress m-b-0">
+                      <div class="progress-bar progress-bar-primary stat4" data-transitiongoal="76"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+                      <div class="col-xlg-2 col-small-stats">
+            </div>
+
+
+            <div class="col-xlg-6">
+              <div class="panel">
+                <div class="panel-content widget-full widget-stock stock2">
+                  <div class="tab_right">
+                    <ul class="nav nav-tabs">
+                      <li class="lines-3">
+                        <a href="#yahoo-tab" id="yahoo" data-toggle="tab" data-color="green" data-value="+6.214%">
+                          <div class="clearfix">
+                            <span class="title pull-left">YHOO</span>
+                            <span class="pull-right">Yahoo Inc</span>
+                          </div>
+                          <div class="clearfix">
+                            <span class="c-gray pull-left"><strong>23.32</strong></span>
+                            <span class="c-green pull-right">+6.214%</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="lines-3 active">
+                        <a href="#google-tab" id="google" data-toggle="tab" data-color="red" data-value="-8.425%">
+                          <div class="clearfix">
+                            <span class="title pull-left">GOOG</span>
+                            <span class="pull-right">Google Inc</span>
+                          </div>
+                          <div class="clearfix">
+                            <span class="c-gray pull-left"><strong>22.32</strong></span>
+                            <span class="c-red pull-right">-8.425%</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="lines-3">
+                        <a href="#nokia-tab"  id="nokia" data-toggle="tab" data-color="green" data-value="+2.035%">
+                          <div class="clearfix">
+                            <span class="title pull-left">NOK</span>
+                            <span class="pull-right">Nokia Inc</span>
+                          </div>
+                          <div class="clearfix">
+                            <span class="c-gray pull-left"><strong>25.32</strong></span>
+                            <span class="c-green pull-right">+2.035%</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="lines-3">
+                        <a href="#htc-tab"  id="htc" data-toggle="tab" data-color="red" data-value="-1.052%">
+                          <div class="clearfix">
+                            <span class="title pull-left">HTC</span>
+                            <span class="pull-right">HTC Inc</span>
+                          </div>
+                          <div class="clearfix">
+                            <span class="c-gray pull-left"><strong>18.96</strong></span>
+                            <span class="c-red pull-right">-1.052%</span>
+                          </div>
+                        </a>
+                      </li>
+                      
+                    </ul>
+                    <div class="tab-content">
+                      <div class="title-stock">
+                        <h1>Google Inc</h1>
+                        <span class="c-red">-8.425%</span>
+                      </div>
+                      <div class="tab-pane" id="yahoo-tab" style="display:none">
+                        <div id="stock-yahoo"></div>
+                        <div class="company-info">Yahoo! Inc. is an American multinational Internet corporation headquartered in Sunnyvale, California. It is globally known for its Web portal, search engine Yahoo Search, and related services.</div>
+                      </div>
+                      <div class="tab-pane active" id="google-tab">
+                        <div id="stock-google"></div>
+                        <div class="company-info">Google is a United States-headquartered, multinational corporation specializing in Internet-related services and products. These include online advertising technologies, search, cloud computing, and software.</div>
+                      </div>
+                      <div class="tab-pane" id="nokia-tab" style="display:none">
+                        <div id="stock-nokia"></div>
+                        <div class="company-info">Nokia is a Finnish multinational communications and information technology company. Nokia employed 90,000 people across 120 countries, conducts sales in more than 150 countries and reported annual revenues of around €12.7 billion.</div>
+                      </div>
+                      <div class="tab-pane" id="htc-tab" style="display:none">
+                        <div id="stock-htc"></div>
+                        <div class="company-info">HTC Corporation is a Taiwanese manufacturer of smartphones and tablets. Founded in 1997, HTC began designing and manufacturing devices such as mobile phones, touchscreen phones, and PDAs based on Windows Mobile OS.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+
+
+          </div>
+
+
+      <div class="footer" layout:include="partials/footer"></div>
+
+          
+          
+        </div>
+        <!-- END PAGE CONTENT -->
+      </div>
+      <!-- END MAIN CONTENT -->
+      <!-- BEGIN BUILDER -->
+
+      <!-- END BUILDER -->
+    </section>
+    <!-- BEGIN QUICKVIEW SIDEBAR -->
+
+    <!-- END QUICKVIEW SIDEBAR -->
+    
+    <!-- BEGIN SEARCH -->
+
+    <!-- END SEARCH -->
+    
+    
+    <!-- BEGIN PRELOADER -->
+    <div class="loader-overlay">
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </div>
+    <!-- END PRELOADER -->
+    
+    
+    <a href="#" class="scrollup"><i class="fa fa-angle-up"></i></a> 
+    <script src="../assets/global/plugins/jquery/jquery-1.11.1.min.js"></script>
+    <script src="../assets/global/plugins/jquery/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../assets/global/plugins/jquery-ui/jquery-ui-1.11.2.min.js"></script>
+    <script src="../assets/global/plugins/gsap/main-gsap.min.js"></script>
+    <script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/global/plugins/jquery-cookies/jquery.cookies.min.js"></script> <!-- Jquery Cookies, for theme -->
+    <script src="../assets/global/plugins/jquery-block-ui/jquery.blockUI.min.js"></script> <!-- simulate synchronous behavior when using AJAX -->
+    <script src="../assets/global/plugins/bootbox/bootbox.min.js"></script> <!-- Modal with Validation -->
+    <script src="../assets/global/plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script> <!-- Custom Scrollbar sidebar -->
+    <script src="../assets/global/plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js"></script> <!-- Show Dropdown on Mouseover -->
+    <script src="../assets/global/plugins/charts-sparkline/sparkline.min.js"></script> <!-- Charts Sparkline -->
+    <script src="../assets/global/plugins/retina/retina.min.js"></script> <!-- Retina Display -->
+    <script src="../assets/global/plugins/select2/select2.min.js"></script> <!-- Select Inputs -->
+    <script src="../assets/global/plugins/icheck/icheck.min.js"></script> <!-- Checkbox & Radio Inputs -->
+    <script src="../assets/global/plugins/backstretch/backstretch.min.js"></script> <!-- Background Image -->
+    <script src="../assets/global/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script> <!-- Animated Progress Bar -->
+<!--     <script src="../assets/global/js/builder.js"></script> Theme Builder -->
+    <script src="../assets/global/js/sidebar_hover.js"></script> <!-- Sidebar on Hover -->
+    <script src="../assets/global/js/application.js"></script> <!-- Main Application Script -->
+    <script src="../assets/global/js/plugins.js"></script> <!-- Main Plugin Initialization Script -->
+    <script src="../assets/global/js/widgets/notes.js"></script> <!-- Notes Widget -->
+<!--     <script src="../assets/global/js/quickview.js"></script> Chat Script -->
+<!--     <script src="../assets/global/js/pages/search.js"></script> Search Script -->
+    <!-- BEGIN PAGE SCRIPT -->
+<!--     <script src="../assets/global/plugins/noty/jquery.noty.packaged.min.js"></script>  Notifications -->
+<!--     <script src="../assets/global/plugins/bootstrap-editable/js/bootstrap-editable.min.js"></script> Inline Edition X-editable -->
+    <script src="../assets/global/plugins/bootstrap-context-menu/bootstrap-contextmenu.min.js"></script> <!-- Context Menu -->
+<!--     <script src="../assets/global/plugins/multidatepicker/multidatespicker.min.js"></script> Multi dates Picker -->
+    <script src="../assets/global/js/widgets/todo_list.js"></script>
+<!--     <script src="../assets/global/plugins/metrojs/metrojs.min.js"></script> Flipping Panel -->
+    <script src="../assets/global/plugins/charts-chartjs/Chart.min.js"></script>  <!-- ChartJS Chart -->
+    <script src="../assets/global/plugins/charts-highstock/js/highstock.min.js"></script> <!-- financial Charts -->
+    <script src="../assets/global/plugins/charts-highstock/js/modules/exporting.min.js"></script> <!-- Financial Charts Export Tool -->
+    <script src="../assets/global/plugins/maps-amcharts/ammap/ammap.min.js"></script> <!-- Vector Map -->
+<!--     <script src="../assets/global/plugins/maps-amcharts/ammap/maps/js/worldLow.min.js"></script> Vector World Map  -->
+<!--     <script src="../assets/global/plugins/maps-amcharts/ammap/themes/black.min.js"></script> Vector Map Black Theme -->
+<!--     <script src="../assets/global/plugins/skycons/skycons.min.js"></script> Animated Weather Icons -->
+<!--     <script src="../assets/global/plugins/simple-weather/jquery.simpleWeather.js"></script> Weather Plugin -->
+<!--     <script src="../assets/global/js/widgets/widget_weather.js"></script> -->
+    <script src="../assets/global/js/pages/dashboard.js"></script>
+    <!-- END PAGE SCRIPT -->
+    <script src="../assets/admin/layout1/js/layout.js"></script>
+  </body>
+</html>
+
