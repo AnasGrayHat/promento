@@ -22,9 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
     private DataSource dataSource ;
 	
 	
-    @Autowired
-    CustomSuccessHandler customSuccessHandler;
-	
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	
@@ -42,17 +40,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
 
         
         
-    	 http.exceptionHandling().accessDeniedPage("/login");
+//    	 http.exceptionHandling().accessDeniedPage("/login");
     }
 
     
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(dataSource)
-               .usersByUsernameQuery("select username AS principal ,password AS  credentials, enable from user where username=?")
-                .authoritiesByUsernameQuery("select username as principal , role  as role  from user where username=?");
-        
-        
+//        auth.jdbcAuthentication().dataSource(dataSource)
+//               .usersByUsernameQuery("select username AS principal ,password AS  credentials, enable from user where username=?")
+//                .authoritiesByUsernameQuery("select username as principal , role  as role  from user where username=?");
+//        
+//        
     	
     }
 	
