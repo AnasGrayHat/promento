@@ -103,11 +103,11 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			
-  <plugin>
-      <groupId>com.google.appengine</groupId>
-      <artifactId>appengine-maven-plugin</artifactId>
-      <version>1.9.60</version>
-  </plugin>
+<plugin>
+    <groupId>com.google.cloud.tools</groupId>
+    <artifactId>appengine-maven-plugin</artifactId>
+    <version>1.0.0</version>
+</plugin>
       
 
          <plugin>
