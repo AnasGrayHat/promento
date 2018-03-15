@@ -50,7 +50,16 @@ public class Company implements Serializable{
 	 
 	 
 	private String logoFileName;
-//	private String actionnariat;
+public String getLogoFileName() {
+		return logoFileName;
+	}
+
+
+
+	public void setLogoFileName(String logoFileName) {
+		this.logoFileName = logoFileName;
+	}
+	//	private String actionnariat;
 	private int  RRI ;//rate of return on investment
 	private int horizon;
 //	private String mentors;
@@ -93,14 +102,15 @@ public class Company implements Serializable{
 
 
 
-	public Company(String companyName, int turnOver,String legalForm, String generalDirector, Date dateCreation, String logo,
+	public Company(String companyName, int turnOver,String legalForm,
+			String generalDirector, Date dateCreation, String logoFileName,
 			int rRI, int horizon, String comment) {
 		super();
 		this.companyName = companyName;
 		this.legalForm = legalForm;
 		this.generalDirector = generalDirector;
 		this.dateCreation = dateCreation;
-		this.logoFileName = logo;
+		this.logoFileName = logoFileName;
 		RRI = rRI;
 		this.horizon = horizon;
 		this.comment = comment;
@@ -133,6 +143,10 @@ public class Company implements Serializable{
 	public String getLegalForm() {
 		return legalForm;
 	}
+
+
+
+
 	public void setLegalForm(String legalForm) {
 		this.legalForm = legalForm;
 	}
@@ -148,12 +162,10 @@ public class Company implements Serializable{
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
 	}
-	public String getlogoFileName() {
-		return logoFileName;
-	}
-	public void setlogoFileName(String logo) {
-		this.logoFileName = logo;
-	}
+
+	
+	
+	
 	public int getRRI() {
 		return RRI;
 	}

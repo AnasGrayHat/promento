@@ -221,7 +221,7 @@
 										<label class="control-label">Logo de l'entreprise :</label>
 				<div class="fileinput fileinput-new" data-provides="fileinput">
                           <div class="fileinput-new thumbnail">
-                            <img data-src="" onerror="this.src='../assets/global/images/logo/insert.png'" th:src="@{logos(logoId=*{id})}" class="img-responsive" style="width:200px ;max-height:200px" />
+                            <img data-src="" onerror="this.src='../assets/global/images/logo/insert.png'" th:src="${@environment.getProperty('dir.images.logos')} + '/' + *{logoFileName}" class="img-responsive" style="width:200px ;max-height:200px" />
                           </div>
                           <div class="fileinput-preview fileinput-exists thumbnail"  style="line-height: 10px; width:200px ;max-height:200px"></div>
                           <div>

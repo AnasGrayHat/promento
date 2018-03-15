@@ -27,8 +27,8 @@ public class DashboardController {
 	public String dashboard()
 	{
 		
-		if(request.getAttribute("logged") == null || !(boolean)request.getAttribute("logged"))
-			return "login";
+//		if(request.getAttribute("logged") == null || !(boolean)request.getAttribute("logged"))
+//			return "login";
 		
 //		model.addAttribute("companies", companyRepository.findAll());
 		return "dashboard";

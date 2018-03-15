@@ -215,7 +215,7 @@
 										<div class="col-md-6 line-separator">
 						
 
-										<img th:src="@{logos(logoId=${c.id})}"  class = "img-rounded img-responsive"/>
+										<img th:src="${@environment.getProperty('dir.images.logos')} + '/' + ${c.logoFileName}"  class = "img-rounded img-responsive"/>
 
 										</div>
 										<div class="col-md-6">

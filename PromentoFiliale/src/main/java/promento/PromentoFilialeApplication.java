@@ -1,6 +1,5 @@
 package promento;
 
-import java.util.Date;
 import java.util.Locale;
 
 import org.springframework.boot.SpringApplication;

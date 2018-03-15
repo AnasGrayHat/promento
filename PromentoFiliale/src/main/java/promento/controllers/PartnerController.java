@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import promento.aws.AmazonClient;
 import promento.dao.PartnerRepository;
 import promento.entities.Partner;
 
@@ -38,6 +39,11 @@ public class PartnerController {
 
 	@Autowired
 	private PartnerRepository partnerRepository ;
+	
+	
+	@Autowired
+	private AmazonClient amazonClient;
+	
 	
 	
 	@Value("${dir.images.partner.photos}")
@@ -79,25 +85,37 @@ public class PartnerController {
 		
 		
 		
-		Partner savedPartner = partnerRepository.save( partner );
-
-		String filename = savedPartner.getId().toString();
-		savedPartner.setPhotoFileName(filename);
-		partnerRepository.save( savedPartner );
-
-			
-			
-		if(!new File(photosDir).exists())
-			new File(photosDir).mkdirs();
+//		Partner savedPartner = partnerRepository.save( partner );
+//
+//		String filename = savedPartner.getId().toString();
+//		savedPartner.setPhotoFileName(filename);
+//		partnerRepository.save( savedPartner );
+//
+//			
+//			
+//		if(!new File(photosDir).exists())
+//			new File(photosDir).mkdirs();
 		
+		
+
 		
 		if(!photo_file.isEmpty()) 
 		{
 
-			photo_file.transferTo(new File(photosDir + File.separator + filename));
+//			logo_file.transferTo(new File(logosDir + File.separator + filename));
+//			savedCompany.setLogoUrl(filename);
+//			companyRepository.save( companyRepository );
+
 			
+			String newLogoFileName = amazonClient.uploadFile(photo_file ,partner.getEmail() );
+			
+			partner.setPhotoFileName(newLogoFileName);
 			
 		}
+		
+		partnerRepository.save( partner );
+		
+		
 		
 		
 		
@@ -144,7 +162,7 @@ public class PartnerController {
 	public String updatePartner( Model model ,
 			@ModelAttribute("partner") @Valid Partner partner ,
 			BindingResult bendingResult ,
-			@RequestParam("photo") MultipartFile logo_file ) throws IllegalStateException, IOException {
+			@RequestParam("photo") MultipartFile photo_file ) throws IllegalStateException, IOException {
 		
 		if( bendingResult.hasErrors() ) {
 			model.addAttribute("partner", partner );
@@ -152,54 +170,80 @@ public class PartnerController {
 		}
 		
 		
-
-		String filename = partner.getId().toString();
-		partnerRepository.save( partner );
-
-			
-			
-		if(!new File(photosDir).exists())
-			new File(photosDir).mkdirs();
+//
+//		String filename = partner.getId().toString();
+//		partnerRepository.save( partner );
+//
+//			
+//			
+//		if(!new File(photosDir).exists())
+//			new File(photosDir).mkdirs();
 		
 		
-		if(!logo_file.isEmpty()) 
+		if(!photo_file.isEmpty()) 
 		{
-			logo_file.transferTo(new File(photosDir + File.separator + filename));
+
+//			logo_file.transferTo(new File(logosDir + File.separator + filename));
+//			savedCompany.setLogoUrl(filename);
+//			companyRepository.save( companyRepository );
+
 			
+			String newLogoFileName = amazonClient.uploadFile(photo_file ,partner.getEmail() );
+			
+			partner.setPhotoFileName(newLogoFileName);
 			
 		}
+		
+		partnerRepository.save( partner );
+		
 		
 		
 		return "redirect:partners";
 	}
 
 	
-	@RequestMapping(value="/photos" , produces = MediaType.IMAGE_JPEG_VALUE)
+//	@RequestMapping(value="/photos" , produces = MediaType.IMAGE_JPEG_VALUE)
+//	@ResponseBody
+//	public byte[] getPhoto( Long photoId ,HttpServletRequest request) throws IOException
+//	{
+//
+//		Path path = null;
+//		byte[] data ;
+//		
+//		
+//		String rpath = photosDir + File.separator + photoId;;
+//
+//		path = Paths.get(rpath);
+//		if(path.toFile().exists())
+//		{
+//			 
+//			data = Files.readAllBytes(path);
+//		}
+//		else
+//		{
+//			throw new ResourceNotFoundException();
+//		}
+//		
+//
+//		
+//		return data;
+//	}
+//	
+//	
+//
+	
+	@RequestMapping(value="/getStorageBaseUrl")
 	@ResponseBody
-	public byte[] getPhoto( Long photoId ,HttpServletRequest request) throws IOException
+	public String getStorageBaseUrl() 
 	{
 
-		Path path = null;
-		byte[] data ;
-		
-		
-		String rpath = photosDir + File.separator + photoId;;
-
-		path = Paths.get(rpath);
-		if(path.toFile().exists())
-		{
-			 
-			data = Files.readAllBytes(path);
-		}
-		else
-		{
-			throw new ResourceNotFoundException();
-		}
-		
-
-		
-		return data;
+		return photosDir ;
 	}
 	
 	
+	
+	
 }
+	
+	
+	

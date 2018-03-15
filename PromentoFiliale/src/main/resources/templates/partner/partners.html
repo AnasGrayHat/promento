@@ -334,7 +334,7 @@
 						</div>
                 <div class="panel-body p-10">
                   <div class="text-center col-xs-4">
-                    <img th:src="@{photos(photoId=*{c.id})}" class="img-responsive img-circle	" />
+                    <img th:src="${@environment.getProperty('dir.images.partner.photos')} + '/' + ${c.photoFileName}" class="img-responsive img-circle	" />
                   </div>
                   <div class="clearfix col-xs-8"  th:inline="text">
                     <h2 class="c-dark w-600">[[${c.firstName}]] [[${c.lastName}]]</h2>

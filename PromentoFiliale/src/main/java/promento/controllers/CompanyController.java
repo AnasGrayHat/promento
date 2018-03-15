@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -30,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import promento.aws.AmazonClient;
 import promento.dao.CompanyRepository;
 import promento.entities.Company;
 
@@ -39,6 +39,9 @@ public class CompanyController {
 
 	@Autowired
 	private CompanyRepository companyRepository ;
+	
+	@Autowired
+	private AmazonClient amazonClient;
 	
 	
 	@Value("${dir.images.logos}")
@@ -79,29 +82,34 @@ public class CompanyController {
 		}
 		
 		
+//		String filename = company.getId().toString();
+//		Company savedCompany = companyRepository.save( company );
+//
+//			
+//			
+//		if(!new File(logosDir).exists())
+//			new File(logosDir).mkdirs();
 		
-		
-		Company savedCompany = companyRepository.save( company );
 
-		String filename = savedCompany.getId().toString();
-		savedCompany.setlogoFileName(filename);
-		companyRepository.save( savedCompany );
 
-			
-			
-		if(!new File(logosDir).exists())
-			new File(logosDir).mkdirs();
-		
+
 		
 		if(!logo_file.isEmpty()) 
 		{
 
-			logo_file.transferTo(new File(logosDir + File.separator + filename));
+//			logo_file.transferTo(new File(logosDir + File.separator + filename));
+//			savedCompany.setLogoUrl(filename);
+//			companyRepository.save( companyRepository );
+
 			
+			String newLogoFileName = amazonClient.uploadFile(logo_file ,company.getCompanyName() );
+			
+			company.setLogoFileName(newLogoFileName);
 			
 		}
 		
-		
+		companyRepository.save( company );
+
 		
 		return "redirect:companies";
 	}
@@ -155,53 +163,70 @@ public class CompanyController {
 		
 		
 
-		String filename = company.getId().toString();
-		companyRepository.save( company );
-
-			
-			
-		if(!new File(logosDir).exists())
-			new File(logosDir).mkdirs();
+//		String filename = company.getId().toString();
+//		companyRepository.save( company );
+//
+//			
+//			
+//		if(!new File(logosDir).exists())
+//			new File(logosDir).mkdirs();
 		
 		
 		if(!logo_file.isEmpty()) 
 		{
-			logo_file.transferTo(new File(logosDir + File.separator + filename));
+//			logo_file.transferTo(new File(logosDir + File.separator + filename));
 			
+			String newLogoFileName = amazonClient.uploadFile(logo_file ,company.getCompanyName() );
 			
+			company.setLogoFileName(newLogoFileName);
 		}
 		
+		companyRepository.save( company );
+
 		
 		return "redirect:companies";
 	}
 
 	
-	@RequestMapping(value="/logos" , produces = MediaType.IMAGE_JPEG_VALUE)
+//	@RequestMapping(value="/logos" , produces = MediaType.IMAGE_JPEG_VALUE)
+//	@ResponseBody
+//	public byte[] getLogo( Long logoId ,HttpServletRequest request) throws IOException
+//	{
+//
+//		Path path = null;
+//		byte[] data ;
+//		
+//		
+//		String rpath = logosDir + File.separator + logoId;;
+//
+//		path = Paths.get(rpath);
+//		if(path.toFile().exists())
+//		{
+//			 
+//			data = Files.readAllBytes(path);
+//		}
+//		else
+//		{
+//			throw new ResourceNotFoundException();
+//		}
+//		
+//
+//		
+//		return data;
+//	}
+	
+	
+	@RequestMapping("/getStorageBaseUrl")
 	@ResponseBody
-	public byte[] getLogo( Long logoId ,HttpServletRequest request) throws IOException
+	public String getStorageBaseUrl(Long id) 
 	{
 
-		Path path = null;
-		byte[] data ;
-		
-		
-		String rpath = logosDir + File.separator + logoId;;
-
-		path = Paths.get(rpath);
-		if(path.toFile().exists())
-		{
-			 
-			data = Files.readAllBytes(path);
-		}
-		else
-		{
-			throw new ResourceNotFoundException();
-		}
-		
-
-		
-		return data;
+		return logosDir ;
 	}
+	
+	
+	
+	
 	
 	
 	@RequestMapping("/finance")
